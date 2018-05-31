@@ -16,7 +16,7 @@ public class MultiThread {
         //遍历打印
         for(ThreadInfo threadInfo:threadInfos) {
             System.out.println("["+threadInfo.getThreadId()+"]"+
-            threadInfo.getThreadName());
+            threadInfo.getThreadName() + "    state:" + threadInfo.getThreadState());
         }
     }
 }

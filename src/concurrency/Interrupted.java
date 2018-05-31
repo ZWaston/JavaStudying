@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Interrupted {
 
     public static void main(String[] args) throws Exception {
-        //当一个Java虚拟机中不存在非Daemon线程的时候，Java虚拟机将会退出
+        //当一个Java虚拟机中只存在Daemon线程的时候，Java虚拟机将会退出，默认的线程都是非Daemon线程
         // sleepThread不停的尝试睡眠，并设置为Daemon线程
         Thread sleepThread = new Thread(new SleepRunner(), "SleepThread");
         sleepThread.setDaemon(true);
