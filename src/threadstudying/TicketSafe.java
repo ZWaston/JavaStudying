@@ -11,8 +11,8 @@ public class TicketSafe implements Runnable{
 
     @Override
     public void run() {
-        synchronized (this){
-            while (true) {
+        while (true) {
+            synchronized (this) {
                 // 没有余票时，跳出循环
                 if (count <= 0) {
                     break;
@@ -28,8 +28,14 @@ public class TicketSafe implements Runnable{
                 }
                 System.out.println("显示出票信息：" + Thread.currentThread().getName()
                         + "抢到第" + num + "张票，剩余" + count + "张票");
-
             }
+        }
+
+        //一个线程获得锁之后，过一段时间再去竞争锁
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
