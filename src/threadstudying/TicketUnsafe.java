@@ -2,7 +2,7 @@ package threadstudying;
 
 /**
  * 抢票模拟 + 实现Runnable接口来实现线程
- * 设计静态代理模式，可以回顾这个设计模式
+ * 涉及静态代理模式，可以回顾这个设计模式
  * 线程不安全的写法,会有线程抢到相同的票
  */
 public class TicketUnsafe implements Runnable {
@@ -12,24 +12,21 @@ public class TicketUnsafe implements Runnable {
     @Override
     public void run() {
         while (true) {
-            synchronized (this) {
-                // 没有余票时，跳出循环
-                if (count <= 0) {
-                    break;
-                }
-                num++;
-                count--;
-
-                try {
-                    Thread.sleep(500);// 模拟网络延时
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                System.out.println("显示出票信息：" + Thread.currentThread().getName()
-                        + "抢到第" + num + "张票，剩余" + count + "张票");
+            // 没有余票时，跳出循环
+            if (count <= 0) {
+                break;
             }
+            num++;
+            count--;
 
+            try {
+                Thread.sleep(500);// 模拟网络延时
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.out.println("显示出票信息：" + Thread.currentThread().getName()
+                    + "抢到第" + num + "张票，剩余" + count + "张票");
         }
     }
 
