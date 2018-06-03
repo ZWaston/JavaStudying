@@ -17,6 +17,7 @@ public class Storage {
     // 生产产品
     public void produce(String producer)
     {
+        //锁了整个list，当竞争多的时候效率不高，应为生产的时候，消费者不能消费
         synchronized (list)
         {
             // 如果仓库已满
